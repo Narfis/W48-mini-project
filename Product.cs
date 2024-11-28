@@ -42,16 +42,18 @@ class Products
             return;
         }
 
+        const int padding = -10;
 
-        Console.WriteLine("Category".PadRight(10) + "Name".PadRight(10) + "Price");
+        Console.WriteLine($"{"Catecory", padding}{"Name", padding}{"Price"}");
         foreach (var product in sortedProducts)
         {
-            Console.WriteLine($"{product.Category.PadRight(10)}{product.Name.PadRight(10)}{product.Price}");
+            Console.WriteLine($"{product.Category, padding}{product.Name, padding}{product.Price}");
         }
 
         float sum = sortedProducts.Sum(p => p.Price);
 
-        Console.WriteLine("".PadRight(10) + "Total".PadRight(10) + sum);
+
+        Console.WriteLine($"{"", padding}{"Total", padding}{sum}");
     }
 
     public void PrintProducts(string query)
@@ -66,6 +68,8 @@ class Products
 
         var productsToHighlight = sortedProducts.Select(p => p.Name.Contains(query)).ToList();
 
+        const int padding = -10;
+
         Console.WriteLine("Category".PadRight(10) + "Name".PadRight(10) + "Price");
         for(int i = 0; i < sortedProducts.Count; i++)
         {
@@ -74,11 +78,11 @@ class Products
             {
                 Console.ForegroundColor = ConsoleColor.Magenta;
             }
-            Console.WriteLine($"{sortedProducts[i].Category.PadRight(10)}{sortedProducts[i].Name.PadRight(10)}{sortedProducts[i].Price}");
+            Console.WriteLine($"{sortedProducts[i].Category,padding}{sortedProducts[i].Name,padding}{sortedProducts[i].Price}");
         }
         Console.ForegroundColor = ConsoleColor.White;
 
         float sum = sortedProducts.Sum(p => p.Price);
-        Console.WriteLine("".PadRight(10) + "Total".PadRight(10) + sum);
+        Console.WriteLine($"{"",padding}{"Total",padding}{sum}");
     }
 }
