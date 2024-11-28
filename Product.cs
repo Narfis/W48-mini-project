@@ -70,14 +70,10 @@ class Products
 
         const int padding = -10;
 
-        Console.WriteLine("Category".PadRight(10) + "Name".PadRight(10) + "Price");
-        for(int i = 0; i < sortedProducts.Count; i++)
+        Console.WriteLine($"{"Catecory",padding}{"Name",padding}{"Price"}");
+        for (int i = 0; i < sortedProducts.Count; i++)
         {
-            Console.ForegroundColor = ConsoleColor.White;
-            if (productsToHighlight[i])
-            {
-                Console.ForegroundColor = ConsoleColor.Magenta;
-            }
+            Console.ForegroundColor = productsToHighlight[i] ? ConsoleColor.Magenta : ConsoleColor.White;
             Console.WriteLine($"{sortedProducts[i].Category,padding}{sortedProducts[i].Name,padding}{sortedProducts[i].Price}");
         }
         Console.ForegroundColor = ConsoleColor.White;
